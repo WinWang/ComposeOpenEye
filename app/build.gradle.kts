@@ -44,9 +44,10 @@ android {
 
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -99,6 +100,7 @@ dependencies {
     implementation(Libs.CommonLib.gsonFactory)
     implementation(Libs.Androidx.appcompat)
     implementation(Libs.Androidx.material)
+    implementation(Libs.CommonLib.androidUtils)
 
 
     testImplementation("junit:junit:4.13.2")

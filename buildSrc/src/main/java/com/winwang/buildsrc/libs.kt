@@ -7,16 +7,11 @@ package com.winwang.buildsrc
 object Libs {
 
     object Kotlin {
-        private const val version = "1.5.21"
+        private const val version = "1.9.10"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
     }
-
-//    implementation("androidx.compose.ui:ui")
-//    implementation("androidx.compose.ui:ui-graphics")
-//    implementation("androidx.compose.ui:ui-tooling-preview")
-//    implementation("androidx.compose.material3:material3")
 
     object Compose {
         private const val compose_version = "1.3.3"
@@ -49,12 +44,12 @@ object Libs {
     }
 
     object KTX {
-        const val coreKtx = "androidx.core:core-ktx:1.9.0"
+        const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
     }
 
     object Hilt {
-        private const val hilt_version = "2.40.1"
+        private const val hilt_version = "2.48"
         const val HiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         const val HiltAndroid = "com.google.dagger:hilt-android:$hilt_version"
         const val HiltViewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
@@ -77,6 +72,7 @@ object Libs {
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
         const val gsonFactory = "com.squareup.retrofit2:converter-gson:$retrofit_version"
         const val gson = "com.google.code.gson:gson:2.8.7"
+        const val androidUtils = "com.blankj:utilcodex:1.31.1"
 
     }
 
