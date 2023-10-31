@@ -83,7 +83,7 @@ dependencies {
     implementation(Libs.Accompanist.composeAccompanistCoil)
     implementation(Libs.Accompanist.composeAccompanistSystemUI)
     implementation(Libs.Hilt.HiltAndroid)
-    implementation(Libs.Hilt.HiltViewmodel)
+//    implementation(Libs.Hilt.HiltViewmodel)
     implementation(Libs.Androidx.livedata)
     kapt(Libs.Hilt.HiltCompiler)
     implementation(Libs.Navigation.HiltNavigationCompose)

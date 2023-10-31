@@ -22,7 +22,7 @@ import com.winwang.openeye.model.ViewState
 
 /**
  * Created by WinWang on 2023/10/24
- * Description:
+ * Description:通用状态组件
  **/
 @Composable
 fun <T> ComposeComponent(

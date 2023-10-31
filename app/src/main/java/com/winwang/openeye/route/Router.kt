@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.winwang.openeye.ui.page.FindPage
+import com.winwang.openeye.ui.page.find.FindPage
 import com.winwang.openeye.ui.page.HomePage
 import com.winwang.openeye.ui.page.HotPage
 import com.winwang.openeye.ui.page.MinePage

@@ -1,7 +1,7 @@
 package com.winwang.openeye.di
 
-import com.winwang.openeye.apiservice.ApiService
-import com.winwang.openeye.http.HttpUrl
+import com.winwang.openeye.http.apiservice.ApiService
+import com.winwang.openeye.http.url.HttpUrl
 import com.winwang.openeye.http.RetrofitManager
 import dagger.Module
 import dagger.Provides

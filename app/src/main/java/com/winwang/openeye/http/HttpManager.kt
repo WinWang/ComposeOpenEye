@@ -2,6 +2,7 @@ package com.winwang.openeye.http
 
 import com.google.gson.Gson
 import com.winwang.openeye.constant.AppConfig
+import com.winwang.openeye.http.interceptor.HttpInterceptorLog
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +34,10 @@ object HttpManager {
             readTimeout(30, TimeUnit.SECONDS)
             proxy(if (proxyStatus) null else Proxy.NO_PROXY)
             connectTimeout(30, TimeUnit.SECONDS)
+                .addNetworkInterceptor(
+                    HttpLoggingInterceptor(HttpInterceptorLog())
+                        .setLevel(if (AppConfig.isDebug()) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+                )
             sslSocketFactoryParams.sSLSocketFactory?.let {
                 sslSocketFactoryParams.trustManager?.let { it1 ->
                     sslSocketFactory(it, it1).addInterceptor(

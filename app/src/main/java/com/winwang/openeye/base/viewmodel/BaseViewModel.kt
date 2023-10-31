@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.winwang.openeye.base.lifecycle.AppLifecycleObserver
-import com.winwang.openeye.http.IResultBean
+import com.winwang.openeye.http.model.IResultBean
 import com.winwang.openeye.model.ViewState
 import kotlinx.coroutines.launch
 
@@ -23,7 +23,7 @@ typealias Error = suspend (e: Exception) -> Unit
 typealias Cancel = suspend (e: Exception) -> Unit
 typealias EmitBlock<T> = suspend LiveDataScope<T>.() -> T
 
-class BaseViewModel : ViewModel(), AppLifecycleObserver {
+open class BaseViewModel : ViewModel(), AppLifecycleObserver {
 
 
     /**
@@ -43,7 +43,7 @@ class BaseViewModel : ViewModel(), AppLifecycleObserver {
             }.onSuccess { result ->
                 if (result.requestOk()) {
                     val httpData = result.httpData()
-                    if (httpData == null) {
+                    if (httpData == null || judgeEmpty?.invoke(httpData) == true) {
                         liveData.value = ViewState.Empty(true)
                     } else {
                         liveData.value = ViewState.Success(httpData, isLoadMore)

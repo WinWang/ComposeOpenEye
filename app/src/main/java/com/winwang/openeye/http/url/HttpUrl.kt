@@ -1,4 +1,4 @@
-package com.winwang.openeye.http
+package com.winwang.openeye.http.url
 
 /**
  * Created by WinWang on 2022/5/6

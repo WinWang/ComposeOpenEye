@@ -1,4 +1,4 @@
-package com.winwang.openeye.http
+package com.winwang.openeye.http.model
 
 /**
  * Created by WinWang on 2023/10/24
