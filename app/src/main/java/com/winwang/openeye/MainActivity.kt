@@ -14,7 +14,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.winwang.openeye.base.BaseActivity
 import com.winwang.openeye.route.BottomNavBarView
 import com.winwang.openeye.route.RouteName
-import com.winwang.openeye.route.routes
+import com.winwang.openeye.route.Routes
 import com.winwang.openeye.ui.theme.ComposeOpenEyeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val systemUiController = rememberSystemUiController()
-            systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = true)
+            systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = false)
             ComposeOpenEyeTheme {
                 SideEffect {
                     systemUiController.setSystemBarsColor(
@@ -46,8 +46,8 @@ class MainActivity : BaseActivity() {
                             RouteName.MINE -> BottomNavBarView(navCtrl = navCtrl)
                         }
                     }
-                ) {
-                    routes(navController = navCtrl, RouteName.HOME)
+                ) { paddingValues ->
+                    Routes(navController = navCtrl, paddingValues, RouteName.HOME)
                 }
             }
         }

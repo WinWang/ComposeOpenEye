@@ -1,13 +1,17 @@
 package com.winwang.openeye.route
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.winwang.openeye.ui.page.find.FindPage
 import com.winwang.openeye.ui.page.HomePage
 import com.winwang.openeye.ui.page.HotPage
 import com.winwang.openeye.ui.page.MinePage
+import com.winwang.openeye.ui.page.find.FindPage
 
 
 /**
@@ -20,19 +24,20 @@ object RouteName {
     const val FIND = "find"
     const val HOT = "hot"
     const val MINE = "mine"
-    const val COLLECTION = "collection"
-    const val PROFILE = "profile"
     const val WEB_VIEW = "web_view"
-    const val LOGIN = "login"
-    const val ARTICLE_SEARCH = "article_search"
 }
 
 @Composable
-fun routes(
+fun Routes(
     navController: NavHostController,
+    paddingValues: PaddingValues = PaddingValues(top = 0.dp, bottom = 0.dp, start = 0.dp, end = 0.dp),
     startDestination: String = RouteName.HOME
 ) {
-    NavHost(navController = navController, startDestination = startDestination) {
+    NavHost(
+        navController = navController,
+        startDestination = startDestination,
+        modifier = Modifier.padding(top = 0.dp, bottom = paddingValues.calculateBottomPadding())
+    ) {
         /**
          * 首页
          */

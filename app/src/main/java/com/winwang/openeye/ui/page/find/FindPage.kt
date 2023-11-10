@@ -12,9 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
@@ -36,6 +33,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.winwang.openeye.base.viewmodel.BaseViewModel
+import com.winwang.openeye.widget.CommonTopAppBar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,7 +43,6 @@ import javax.inject.Inject
  * Description:发现页面-承载容器
  **/
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FindPage(
     viewModel: FindViewModel = hiltViewModel()
@@ -53,27 +50,26 @@ fun FindPage(
     val titles = viewModel.tabTitle
     var isLoaded by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
-    val pagerState = rememberPagerState(pageCount = 3, initialPage = 0)
+    val pagerState = rememberPagerState(pageCount = 3, initialPage = 0, initialOffscreenLimit = 3)
     LaunchedEffect(Unit) {
         if (!isLoaded) {
             isLoaded = true
         }
     }
-
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(Color.Yellow)
     ) {
-        CenterAlignedTopAppBar(title = { Text(text = "发现") })
+        CommonTopAppBar(title = "发现", showBackButton = false)
         TabRow(
             selectedTabIndex = pagerState.currentPage,
             modifier = Modifier
                 .background(Color.Red)
                 .fillMaxWidth()
                 .height(50.dp),
+            contentColor = Color.White,
+            containerColor = Color.Red,
             indicator = { positions ->
                 Box(
                     Modifier
@@ -81,7 +77,7 @@ fun FindPage(
                         .tabIndicatorOffset(positions[pagerState.currentPage])
                         .height(5.dp)
                         .padding(horizontal = 20.dp)
-                        .background(color = Color.Red, shape = RoundedCornerShape(5.dp))
+                        .background(color = Color.White, shape = RoundedCornerShape(5.dp))
                 )
             }
         ) {
@@ -97,7 +93,7 @@ fun FindPage(
                 ) {
                     Text(
                         text = title,
-                        color = Color.Red,
+                        color = Color.White,
                         fontSize = if (index == pagerState.currentPage) 16.sp else 14.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -106,7 +102,8 @@ fun FindPage(
         }
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
         ) { page ->
             when (page) {
                 0 -> FocusPage()

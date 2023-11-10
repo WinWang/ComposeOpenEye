@@ -33,9 +33,7 @@ import javax.inject.Inject
 fun FocusPage(
     viewModel: FocusViewModel = hiltViewModel()
 ) {
-
     var hasInit by rememberSaveable { mutableStateOf(false) }
-
     LaunchedEffect(hasInit) {
         if (!hasInit) {
             viewModel.getFollowData()

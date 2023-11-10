@@ -6,11 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,15 +14,15 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blankj.utilcode.util.LogUtils
-import com.winwang.openeye.http.apiservice.ApiService
 import com.winwang.openeye.base.component.ComposeComponent
 import com.winwang.openeye.base.viewmodel.BaseViewModel
 import com.winwang.openeye.base.viewmodel.ViewStateMutableLiveData
+import com.winwang.openeye.http.apiservice.ApiService
 import com.winwang.openeye.model.HomeDataModel
+import com.winwang.openeye.widget.CommonTopAppBar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -37,7 +32,6 @@ import javax.inject.Inject
  *
  **/
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePage(
     viewModel: HomeViewModel = hiltViewModel()
@@ -52,7 +46,7 @@ fun HomePage(
         }
     }
     Column {
-        CenterAlignedTopAppBar(title = { Text(text = "首页") })
+        CommonTopAppBar(title = "首页", showBackButton = false)
         ComposeComponent(viewStateLiveData = viewModel.homeLiveData) {
             Box(
                 modifier = Modifier

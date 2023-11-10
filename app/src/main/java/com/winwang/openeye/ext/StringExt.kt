@@ -9,9 +9,9 @@ package com.winwang.openeye.ext
  * 替换图片链接
  */
 fun String?.replaceImageUrl(): String {
-    val regex = """^(https?://)img\.(.*)$""".toRegex()
-    val replacement = "$1ali-img.$2"
-    return this?.replace(regex, replacement) ?: ""
+    if (this == null) return ""
+    val regex = "^(https?://)img\\.(.*)$".toRegex()
+    return regex.replace(this, "$1ali-img.$2")
 }
 
 
