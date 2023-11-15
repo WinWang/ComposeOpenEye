@@ -1,6 +1,5 @@
 package com.winwang.openeye.http.apiservice
 
-import com.winwang.openeye.http.model.BaseResult
 import com.winwang.openeye.model.CategoryDataModel
 import com.winwang.openeye.model.FollowDataModel
 import com.winwang.openeye.model.HomeDataModel

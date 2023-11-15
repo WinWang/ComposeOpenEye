@@ -1,5 +1,6 @@
 package com.winwang.openeye.ui.page.find
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -59,14 +62,15 @@ fun CategoryPage(
             LazyColumn {
                 items(chunkedItems.size) { index ->
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = if (chunkedItems[index].size == 2) Modifier.fillMaxWidth() else Modifier
+                            .fillMaxWidth(fraction = 0.5f),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         for (chunkedItem in chunkedItems[index]) {
                             Box(
                                 modifier = Modifier
-                                    .height(200.dp)
-                                    .width(200.dp)
+                                    .weight(0.5f)
+                                    .aspectRatio(1f)
                                     .padding(5.dp)
                                     .clip(RoundedCornerShape(5.dp))
                                     .background(Color.LightGray)

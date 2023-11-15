@@ -34,6 +34,7 @@ object Libs {
         const val composeAccompanistPage = "com.google.accompanist:accompanist-pager:0.18.0"
         const val composeAccompanistCoil = "com.google.accompanist:accompanist-coil:0.15.0"
         const val composeAccompanistSystemUI = "com.google.accompanist:accompanist-systemuicontroller:0.18.0"
+        const val composeSwipeRefresh = "com.google.accompanist:accompanist-swiperefresh:0.18.0"
     }
 
 
@@ -52,13 +53,13 @@ object Libs {
         private const val hilt_version = "2.48"
         const val HiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         const val HiltAndroid = "com.google.dagger:hilt-android:$hilt_version"
-        const val HiltViewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+        const val HiltViewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.1.0-alpha01"
         const val HiltCompiler = "com.google.dagger:hilt-android-compiler:$hilt_version"
     }
 
     object Navigation {
         const val NavigationCompose = "androidx.navigation:navigation-compose:2.5.2"
-        const val HiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
+        const val HiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.1.0-alpha01"
     }
 
     object CommonLib {

@@ -1,5 +1,7 @@
 package com.winwang.openeye.http.model
 
+import com.winwang.openeye.model.HomeDataModel
+
 /**
  * Created by WinWang on 2023/10/24
  * Description:返回结果接口

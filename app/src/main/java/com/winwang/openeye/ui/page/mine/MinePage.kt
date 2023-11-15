@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.winwang.openeye.ui.page
+package com.winwang.openeye.ui.page.mine
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

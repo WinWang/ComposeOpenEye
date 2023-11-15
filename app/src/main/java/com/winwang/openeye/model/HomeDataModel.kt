@@ -1,10 +1,11 @@
 package com.winwang.openeye.model
 
 import com.winwang.openeye.http.model.IResultBean
+import com.winwang.openeye.widget.BannerData
 
 data class HomeDataModel(
     val dialog: Any?,
-    val issueList: List<Issue?>?,
+    val issueList: ArrayList<Issue>?,
     val newestIssueType: String?,
     val nextPageUrl: String?,
     val nextPublishTime: Long?
@@ -12,18 +13,19 @@ data class HomeDataModel(
     data class Issue(
         val count: Int?,
         val date: Long?,
-        val itemList: List<Item?>?,
+        var itemList: MutableList<Item>?,
         val publishTime: Long?,
         val releaseTime: Long?,
         val type: String?
     ) {
         data class Item(
-            val adIndex: Int?,
-            val `data`: Data?,
-            val id: Int?,
-            val tag: Any?,
-            val trackingData: Any?,
-            val type: String?
+            var adIndex: Int? =-1,
+            var `data`: Data? = null,
+            var id: Int? = -1,
+            var tag: Any? = null,
+            var trackingData: Any? = null,
+            var type: String? = "",
+            var bannerList: List<BannerData>? = mutableListOf()
         ) {
             data class Data(
                 val actionUrl: String?,

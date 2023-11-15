@@ -1,4 +1,4 @@
-package com.winwang.openeye.ui.page
+package com.winwang.openeye.ui.page.hot
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

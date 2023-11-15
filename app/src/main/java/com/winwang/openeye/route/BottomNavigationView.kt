@@ -6,6 +6,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -29,7 +30,7 @@ fun BottomNavBarView(navCtrl: NavHostController) {
         BottomNavRoute.Hot,
         BottomNavRoute.Mine
     )
-     NavigationBar {
+    NavigationBar {
         val navBackStackEntry by navCtrl.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         bottomNavList.forEach { destination ->
@@ -38,10 +39,11 @@ fun BottomNavBarView(navCtrl: NavHostController) {
                 icon = {
                     Icon(
                         imageVector = destination.icon,
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = if (selected) Color.Red else Color.Gray
                     )
                 },
-                label = { Text(text = stringResource(destination.stringId)) },
+                label = { Text(text = stringResource(destination.stringId), color = if (selected) Color.Red else Color.Gray) },
                 selected = selected,
                 onClick = {
                     runCatching {

@@ -8,9 +8,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.winwang.openeye.ui.page.HomePage
-import com.winwang.openeye.ui.page.HotPage
-import com.winwang.openeye.ui.page.MinePage
+import com.winwang.openeye.ui.page.home.HomePage
+import com.winwang.openeye.ui.page.hot.HotPage
+import com.winwang.openeye.ui.page.mine.MinePage
 import com.winwang.openeye.ui.page.find.FindPage
 
 

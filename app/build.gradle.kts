@@ -82,6 +82,7 @@ dependencies {
     implementation(Libs.Accompanist.composeAccompanistPage)
     implementation(Libs.Accompanist.composeAccompanistCoil)
     implementation(Libs.Accompanist.composeAccompanistSystemUI)
+    implementation(Libs.Accompanist.composeSwipeRefresh)
     implementation(Libs.Hilt.HiltAndroid)
 //    implementation(Libs.Hilt.HiltViewmodel)
     implementation(Libs.Androidx.livedata)
