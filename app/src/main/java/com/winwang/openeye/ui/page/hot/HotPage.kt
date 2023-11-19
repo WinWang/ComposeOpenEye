@@ -18,14 +18,7 @@ import com.winwang.openeye.widget.CommonTopAppBar
 fun HotPage() {
     Column {
         CommonTopAppBar(title = "热门", showBackButton = false)
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(500.dp)
-                .background(androidx.compose.ui.graphics.Color.Red)
-        ) {
 
-        }
     }
 
 

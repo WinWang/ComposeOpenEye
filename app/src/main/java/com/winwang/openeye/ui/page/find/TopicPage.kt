@@ -1,20 +1,21 @@
 package com.winwang.openeye.ui.page.find
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.winwang.openeye.base.component.ComposeComponent
+import com.winwang.openeye.base.component.ComposePagingComponent
 import com.winwang.openeye.base.viewmodel.BaseViewModel
-import com.winwang.openeye.base.viewmodel.ViewStateMutableLiveData
+import com.winwang.openeye.constant.AppPagingConfig
+import com.winwang.openeye.ext.buildPager
+import com.winwang.openeye.ext.replaceImageUrl
 import com.winwang.openeye.http.apiservice.ApiService
-import com.winwang.openeye.model.FollowDataModel
+import com.winwang.openeye.widget.CommonNetworkImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,14 +28,17 @@ import javax.inject.Inject
 fun TopicPage(
     viewModel: TopicViewModel = hiltViewModel()
 ) {
-    ComposeComponent(viewStateLiveData = viewModel.followLiveData) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-                .background(Color.Green)
-        ) {
-            Text(text = "主题")
+    ComposePagingComponent(key = "topic", loadDataBlock = { viewModel.getTopicData() }) {
+        items(it.itemCount) { index ->
+            val item = it[index]
+            CommonNetworkImage(
+                url = item?.data?.image.replaceImageUrl(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 0.dp)
+                    .clip(RoundedCornerShape(8.dp))
+            )
         }
     }
 
@@ -43,14 +47,17 @@ fun TopicPage(
 @HiltViewModel
 class TopicViewModel @Inject constructor(private var api: ApiService) : BaseViewModel() {
 
-    val followLiveData = ViewStateMutableLiveData<FollowDataModel>()
+    var pageIndex = 1
 
-    fun getFollowData() {
-        launchApi(
-            liveData = followLiveData,
-        ) {
-            api.getFollowList()
+    fun getTopicData() = buildPager(
+        config = AppPagingConfig(defaultPageIndex = pageIndex),
+        transformListBlock = {
+            pageIndex += it?.itemList?.count() ?: 0
+            it?.itemList ?: emptyList()
         }
+    ) { _, _ ->
+        api.getTopicList(pageIndex)
     }
+
 
 }

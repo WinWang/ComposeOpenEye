@@ -6,8 +6,10 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -21,15 +23,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.PagingData
 import com.blankj.utilcode.util.LogUtils
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.winwang.openeye.base.component.ComposePagingComponent
 import com.winwang.openeye.base.viewmodel.BaseViewModel
 import com.winwang.openeye.base.viewmodel.ViewStateMutableLiveData
 import com.winwang.openeye.ext.buildPager
+import com.winwang.openeye.ext.logD
 import com.winwang.openeye.ext.replaceImageUrl
 import com.winwang.openeye.http.apiservice.ApiService
 import com.winwang.openeye.model.HomeDataModel
@@ -38,6 +43,7 @@ import com.winwang.openeye.widget.CoilImage
 import com.winwang.openeye.widget.CommonBanner
 import com.winwang.openeye.widget.CommonTopAppBar
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.concurrent.Flow
 import javax.inject.Inject
 
 /**
@@ -63,7 +69,8 @@ fun HomePage(
         ComposePagingComponent(
             modifier = Modifier,
             key = "home",
-            loadDataBlock = { viewModel.getHomePagingList() }
+            loadDataBlock = { viewModel.getHomePagingList() },
+            refreshBlock = { viewModel.getHomePagingList() }
         ) {
             items(it.itemCount) { index ->
                 val item = it[index]
@@ -72,7 +79,11 @@ fun HomePage(
 
                     })
                 } else {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    ) {
                         Box {
                             CoilImage(
                                 url = item?.data?.cover?.feed
@@ -86,16 +97,44 @@ fun HomePage(
                                     .width(50.dp)
                                     .height(20.dp)
                                     .clip(RoundedCornerShape(0.dp, 0.dp, 20.dp, 0.dp))
-                                    .background(Color.Red)
+                                    .background(Color.Red),
+                                contentAlignment = Alignment.Center
                             ) {
                                 Text(
                                     modifier = Modifier
-                                        .width(50.dp)
                                         .height(20.dp)
                                         .align(Alignment.Center),
                                     text = item?.data?.category ?: "",
                                     color = Color.White,
                                     fontSize = 12.sp
+                                )
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 10.dp)
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            CoilImage(
+                                url = item?.data?.author?.icon ?: "",
+                                modifier = Modifier
+                                    .height(40.dp)
+                                    .width(40.dp)
+                                    .clip(RoundedCornerShape(20.dp))
+                            )
+                            Column(modifier = Modifier.padding(start = 10.dp)) {
+                                Text(
+                                    text = item?.data?.author?.name ?: "",
+                                    fontSize = 15.sp
+                                )
+                                Text(
+                                    text = item?.data?.author?.description ?: "",
+                                    fontSize = 12.sp,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+
                                 )
                             }
                         }

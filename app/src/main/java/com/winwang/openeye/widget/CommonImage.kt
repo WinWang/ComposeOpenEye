@@ -79,7 +79,7 @@ fun CommonLocalImage(
 
 @Composable
 fun CoilImage(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     url: Any?,
     needPlaceholder: Boolean = true,
     contentScale: ContentScale = ContentScale.FillBounds,

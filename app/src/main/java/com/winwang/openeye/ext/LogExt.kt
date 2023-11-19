@@ -8,124 +8,124 @@ import com.blankj.utilcode.util.LogUtils
  **/
 
 @JvmOverloads
-fun Any.logD(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.d(tag, msg)
+fun Any.logD(tag: String = this.javaClass.simpleName) {
+    LogUtils.d(tag, this)
 }
 
 @JvmOverloads
-fun Any.logE(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.e(tag, msg)
+fun Any.logE(tag: String = this.javaClass.simpleName) {
+    LogUtils.e(tag, this)
 }
 
 @JvmOverloads
-fun Any.logI(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.i(tag, msg)
+fun Any.logI(tag: String = this.javaClass.simpleName) {
+    LogUtils.i(tag, this)
 }
 
 @JvmOverloads
-fun Any.logW(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.w(tag, msg)
+fun Any.logW(tag: String = this.javaClass.simpleName) {
+    LogUtils.w(tag, this)
 }
 
 @JvmOverloads
-fun Any.logV(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.v(tag, msg)
+fun Any.logV(tag: String = this.javaClass.simpleName) {
+    LogUtils.v(tag, this)
 }
 
 @JvmOverloads
-fun Any.logA(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.a(tag, msg)
+fun Any.logA(tag: String = this.javaClass.simpleName) {
+    LogUtils.a(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonD(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonD(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonE(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonE(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonI(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonI(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonW(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonW(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonV(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonV(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logJsonA(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.json(tag, msg)
+fun Any.logJsonA(tag: String = this.javaClass.simpleName) {
+    LogUtils.json(tag, this)
 }
 
 @JvmOverloads
-fun Any.logXmlD(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlD(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 @JvmOverloads
-fun Any.logXmlE(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlE(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 @JvmOverloads
-fun Any.logXmlI(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlI(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 
 @JvmOverloads
-fun Any.logXmlW(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlW(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 @JvmOverloads
-fun Any.logXmlV(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlV(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 @JvmOverloads
-fun Any.logXmlA(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.xml(tag, msg)
+fun String.logXmlA(tag: String = this.javaClass.simpleName) {
+    LogUtils.xml(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileD(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileD(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileE(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileE(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileI(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileI(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileW(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileW(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileV(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileV(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 @JvmOverloads
-fun Any.logFileA(tag: String = this.javaClass.simpleName, msg: String) {
-    LogUtils.file(tag, msg)
+fun Any.logFileA(tag: String = this.javaClass.simpleName) {
+    LogUtils.file(tag, this)
 }
 
 

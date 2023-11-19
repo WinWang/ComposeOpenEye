@@ -38,6 +38,8 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.winwang.openeye.R
 import com.winwang.openeye.base.lifecycle.ComposeLifeCycleListener
+import com.winwang.openeye.ext.logD
+import com.winwang.openeye.ext.notNull
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -47,7 +49,7 @@ import kotlinx.coroutines.flow.Flow
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun <T : Any> ComposePagingComponent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     key: String = "",
     enableRefresh: Boolean = true,
     showNoMoreDataFooter: Boolean = true,
@@ -110,28 +112,49 @@ fun <T : Any> ComposePagingComponent(
     val pagingStateHolder: PagingStateHolderViewModel<T> = hiltViewModel(key = key)
     val pagingItems = pagingStateHolder.getPagingDataFlow(loadDataBlock).collectAsLazyPagingItems()
     val refreshState = pagingStateHolder.refreshState
-    SwipeRefresh(state = refreshState, onRefresh = {
-        if (refreshBlock != null) {
-            refreshBlock.invoke()
-        } else {
-            pagingItems.refresh()
-        }
-    }
-    ) {
-        if (pagingItems.itemCount == 0) {
-            customEmptyComponent?.invoke()
-        } else {
-            CompositionLocalProvider(LocalOverscrollConfiguration.provides(null)) {
-                LazyColumn(
-                    modifier = modifier,
-                    contentPadding = lazyListContentPadding,
-                    state = lazyListState
-                ) {
-                    listContent(pagingItems)
+    if (pagingStateHolder.showViewState.value) {
+        handleStateComponent(
+            collectAsLazyPagingItems = pagingItems,
+            showViewState = pagingStateHolder.showViewState,
+            retryBlock = retryBlock,
+            viewStateContentAlignment = Alignment.Center,
+            customEmptyComponent = customEmptyComponent,
+            customFailComponent = customFailComponent
+        )
+    } else {
+        SwipeRefresh(
+            state = refreshState,
+            swipeEnabled = enableRefresh,
+            onRefresh = {
+                refreshBlock?.notNull(
+                    notNullAction = {
+                        refreshBlock.invoke()
+                        "外部刷新".logD()
+                    },
+                    nullAction = {
+                        refreshState.isRefreshing = true
+                        pagingItems.refresh()
+                        "内部刷新".logD()
+                    }
+                )
+            }
+        ) {
+            if (pagingItems.itemCount == 0) {
+                customEmptyComponent?.invoke()
+            } else {
+                CompositionLocalProvider(LocalOverscrollConfiguration.provides(null)) {
+                    LazyColumn(
+                        modifier = modifier,
+                        contentPadding = lazyListContentPadding,
+                        state = lazyListState
+                    ) {
+                        listContent(pagingItems)
+                    }
                 }
             }
         }
     }
+
 
 }
 
@@ -262,7 +285,7 @@ class PagingStateHolderViewModel<T : Any> : ViewModel() {
         if (pagingDataFlow == null) {
             pagingDataFlow = loadPagingDataFlowBlock.invoke()
         }
-        return pagingDataFlow!!
+        return pagingDataFlow ?: throw NullPointerException("pagingDataFlow is null")
     }
 
 }

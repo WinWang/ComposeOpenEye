@@ -8,7 +8,7 @@ import com.winwang.openeye.http.model.IResultBean
 data class FollowDataModel(
     val adExist: Boolean?,
     val count: Int?,
-    val itemList: List<Item?>?,
+    val itemList: List<Item>?,
     val lastStartId: Int?,
     val nextPageUrl: String?,
     val refreshCount: Int?,
@@ -29,7 +29,7 @@ data class FollowDataModel(
             val dataType: String?,
             val footer: Any?,
             val header: Header?,
-            val itemList: List<Item?>?
+            val itemList: List<Item>?
         ) {
             data class Header(
                 val actionUrl: String?,
