@@ -6,6 +6,7 @@ import com.winwang.openeye.widget.BannerData
 data class HomeDataModel(
     val dialog: Any?,
     val issueList: ArrayList<Issue>?,
+    val itemList: ArrayList<Issue>?,
     val newestIssueType: String?,
     val nextPageUrl: String?,
     val nextPublishTime: Long?

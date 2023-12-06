@@ -3,6 +3,7 @@ package com.winwang.openeye.http.apiservice
 import com.winwang.openeye.model.CategoryDataModel
 import com.winwang.openeye.model.FollowDataModel
 import com.winwang.openeye.model.HomeDataModel
+import com.winwang.openeye.model.HotDataModel
 import com.winwang.openeye.model.TopicDataModel
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -44,6 +45,13 @@ interface ApiService {
      */
     @GET("api/v3/specialTopics")
     suspend fun getTopicList(@Query("start") num: Int = 1): TopicDataModel
+
+
+    /**
+     * 获取热门数据
+     */
+    @GET("api/v4/rankList/videos")
+    suspend fun getRankList(@Query("strategy") strategy: String): HotDataModel
 
 
 }
