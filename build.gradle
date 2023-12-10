@@ -9,6 +9,27 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        //阿里云
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/releases/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
+
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/google'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin'
+        }
     }
 
     dependencies {
@@ -20,8 +41,8 @@ buildscript {
 
 
 plugins {
-    id("com.android.application") version "8.1.2" apply false
-    id("com.android.library") version "8.1.2" apply false
+    id("com.android.application") version '8.2.0' apply false
+    id("com.android.library") version '8.2.0' apply false
     id("org.jetbrains.kotlin.android") version "1.8.10" apply false
     id("org.jetbrains.kotlin.jvm") version "1.8.10" apply false
 }
