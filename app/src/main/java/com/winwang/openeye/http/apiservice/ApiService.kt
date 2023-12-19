@@ -5,6 +5,7 @@ import com.winwang.openeye.model.FollowDataModel
 import com.winwang.openeye.model.HomeDataModel
 import com.winwang.openeye.model.HotDataModel
 import com.winwang.openeye.model.TopicDataModel
+import com.winwang.openeye.model.VideoDetailDataModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -52,6 +53,13 @@ interface ApiService {
      */
     @GET("api/v4/rankList/videos")
     suspend fun getRankList(@Query("strategy") strategy: String): HotDataModel
+
+
+    /**
+     * 获取关联视频数据
+     */
+    @GET("api/v4/video/related")
+    suspend fun getRelatedVideoList(@Query("id") id: Int): VideoDetailDataModel
 
 
 }

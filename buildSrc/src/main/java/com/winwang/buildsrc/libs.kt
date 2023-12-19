@@ -35,6 +35,7 @@ object Libs {
         const val composeAccompanistCoil = "com.google.accompanist:accompanist-coil:0.15.0"
         const val composeAccompanistSystemUI = "com.google.accompanist:accompanist-systemuicontroller:0.18.0"
         const val composeSwipeRefresh = "com.google.accompanist:accompanist-swiperefresh:0.18.0"
+        const val composeNavigationAnimation = "com.google.accompanist:accompanist-navigation-animation:0.24.4-alpha"
     }
 
 
@@ -74,6 +75,21 @@ object Libs {
         const val gsonFactory = "com.squareup.retrofit2:converter-gson:$retrofit_version"
         const val gson = "com.google.code.gson:gson:2.8.7"
         const val androidUtils = "com.blankj:utilcodex:1.31.1"
+
+    }
+
+    object ExoLib {
+        private const val exoplayer_version = "1.2.0"
+        private const val media3_exoplayer_version = "1.2.0"
+        const val exoplayer_core = "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+        const val exoplayer_dash = "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
+        const val exoplayer_ui = "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+        const val exoplayer_hls = "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
+        const val exoplayer_smoothstreaming = "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer_version"
+
+        const val media3Exoplayer = "androidx.media3:media3-exoplayer:$media3_exoplayer_version"
+        const val media3ExoplayerDash = "androidx.media3:media3-exoplayer-dash:$media3_exoplayer_version"
+        const val media3ExoplayerUI = "androidx.media3:media3-ui:$media3_exoplayer_version"
 
     }
 

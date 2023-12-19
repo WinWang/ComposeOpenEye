@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.winwang.openeye"
-    compileSdk = 33
+    compileSdk = Apps.compileSdkVersion
 
     defaultConfig {
         applicationId = "com.winwang.openeye"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = Apps.targetSdkVersion
         versionCode = 1
         versionName = "1.0"
 
@@ -83,6 +83,7 @@ dependencies {
     implementation(Libs.Accompanist.composeAccompanistCoil)
     implementation(Libs.Accompanist.composeAccompanistSystemUI)
     implementation(Libs.Accompanist.composeSwipeRefresh)
+    implementation(Libs.Accompanist.composeNavigationAnimation)
     implementation(Libs.Hilt.HiltAndroid)
 //    implementation(Libs.Hilt.HiltViewmodel)
     implementation(Libs.Androidx.livedata)
@@ -102,6 +103,11 @@ dependencies {
     implementation(Libs.Androidx.appcompat)
     implementation(Libs.Androidx.material)
     implementation(Libs.CommonLib.androidUtils)
+    implementation(Libs.ExoLib.media3Exoplayer)
+    implementation(Libs.ExoLib.media3ExoplayerDash)
+    implementation(Libs.ExoLib.media3ExoplayerUI)
+
+
 
 
     testImplementation("junit:junit:4.13.2")

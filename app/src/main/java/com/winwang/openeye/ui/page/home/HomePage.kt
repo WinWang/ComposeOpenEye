@@ -4,6 +4,7 @@ package com.winwang.openeye.ui.page.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,11 +39,14 @@ import com.winwang.openeye.ext.logD
 import com.winwang.openeye.ext.replaceImageUrl
 import com.winwang.openeye.http.apiservice.ApiService
 import com.winwang.openeye.model.HomeDataModel
+import com.winwang.openeye.route.RouteName
+import com.winwang.openeye.route.Router
 import com.winwang.openeye.widget.BannerData
 import com.winwang.openeye.widget.CoilImage
 import com.winwang.openeye.widget.CommonBanner
 import com.winwang.openeye.widget.CommonTopAppBar
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.net.URLEncoder
 import java.util.concurrent.Flow
 import javax.inject.Inject
 
@@ -51,6 +55,7 @@ import javax.inject.Inject
  * Description:首页页面
  *
  **/
+@OptIn(ExperimentalPagerApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomePage(
@@ -83,6 +88,10 @@ fun HomePage(
                         modifier = Modifier
                             .padding(8.dp)
                             .clip(RoundedCornerShape(8.dp))
+                            .clickable {
+                                val encodedUrl = URLEncoder.encode("${item?.data?.playUrl}")
+                                Router.push("${RouteName.VIDEO_DETAIL}/${item?.data?.id}/$encodedUrl")
+                            }
                     ) {
                         Box {
                             CoilImage(

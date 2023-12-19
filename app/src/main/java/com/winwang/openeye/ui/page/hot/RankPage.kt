@@ -1,6 +1,7 @@
 package com.winwang.openeye.ui.page.hot
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +32,7 @@ import com.winwang.openeye.base.viewmodel.BaseViewModel
 import com.winwang.openeye.base.viewmodel.ViewStateMutableLiveData
 import com.winwang.openeye.http.apiservice.ApiService
 import com.winwang.openeye.model.HotDataModel
+import com.winwang.openeye.ui.theme.color_666
 import com.winwang.openeye.ui.theme.color_e5e5e5
 import com.winwang.openeye.widget.CoilImage
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -120,14 +122,21 @@ fun RankPage(
                 }
             }
             item {
-                Row(modifier = Modifier.align(Alignment.Center)) {
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .height(50.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
                     Divider(
                         modifier = Modifier
                             .width(30.dp)
                             .background(color_e5e5e5)
                             .height(1.dp)
                     )
-                    Text(text = "我是有底线的")
+                    Text(text = "我是有底线的", color = color_666, fontSize = 12.sp, modifier = Modifier.padding(10.dp))
                     Divider(
                         modifier = Modifier
                             .width(30.dp)

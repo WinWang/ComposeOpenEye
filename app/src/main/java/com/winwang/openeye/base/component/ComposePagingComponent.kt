@@ -110,7 +110,7 @@ fun <T : Any> ComposePagingComponent(
 
     //2、页面布局
     val pagingStateHolder: PagingStateHolderViewModel<T> = hiltViewModel(key = key)
-    val pagingItems = pagingStateHolder.getPagingDataFlow(loadDataBlock).collectAsLazyPagingItems()
+    var pagingItems = pagingStateHolder.getPagingDataFlow(loadDataBlock).collectAsLazyPagingItems()
     val refreshState = pagingStateHolder.refreshState
     if (pagingStateHolder.showViewState.value) {
         handleStateComponent(
@@ -126,13 +126,14 @@ fun <T : Any> ComposePagingComponent(
             state = refreshState,
             swipeEnabled = enableRefresh,
             onRefresh = {
+                refreshState.isRefreshing = true
                 refreshBlock?.notNull(
                     notNullAction = {
                         refreshBlock.invoke()
                         "外部刷新".logD()
                     },
                     nullAction = {
-                        refreshState.isRefreshing = true
+//                        refreshState.isRefreshing = true
                         pagingItems.refresh()
                         "内部刷新".logD()
                     }

@@ -46,6 +46,7 @@ open class BaseViewModel : ViewModel(), AppLifecycleObserver {
                     if (httpData == null || judgeEmpty?.invoke(httpData) == true) {
                         liveData.value = ViewState.Empty(true)
                     } else {
+                        handleResult?.invoke(httpData)
                         liveData.value = ViewState.Success(httpData, isLoadMore)
                     }
                 } else {
